@@ -1,0 +1,23 @@
+{
+  "name": "ajax",
+  "version": "1.0.0",
+  "description": "Ajax学习\r #  HTTP(hypertext transport protocol)协议【超文本传输协议】，协议详细规定了浏览器和万维网服务器之间互相通信的规则。\r 约定，规则",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/changshuai88/ajax.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/changshuai88/ajax/issues"
+  },
+  "homepage": "https://github.com/changshuai88/ajax#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
