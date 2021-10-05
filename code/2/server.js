@@ -1,4 +1,5 @@
 // 1.引入express
+const { json } = require('express');
 const express = require('express');
 
 // 2.创建应用对象
@@ -16,6 +17,35 @@ app.get('/server',(request,response)=>{
     response.send('hello AJAX');
 });
 
+app.post('/server',(request,response)=>{
+    // 设置相应头 设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin','*');
+    response.setHeader('Access-Control-Allow-Headers','*');
+    // 设置相应
+    response.send('hello AJAX POST');
+});
+ // 防止自定义请求头报错，如下设置 可以接收任意类型的请求
+ app.all('/server',(request,response)=>{
+    // 设置相应头 设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin','*');
+    response.setHeader('Access-Control-Allow-Headers','*');
+    // 设置相应
+    response.send('hello AJAX POST');
+});
+
+app.all('/json-server',(request,response)=>{
+    // 设置相应头 设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin','*');
+    response.setHeader('Access-Control-Allow-Headers','*');
+    // 相应一个数据
+    const data={
+        name:'cjs'
+    };
+    // 对对象进行字符串转换
+    let str = JSON.stringify(data);
+    // 设置相应 send 方法中只能接收字符串
+    response.send(str);
+});
 // 4.监听端口启动服务
 app.listen(8000,()=>{
     console.log('服务已经启动,8000端口监听中....');

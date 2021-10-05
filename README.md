@@ -29,4 +29,73 @@ Ajax学习
     </html
 >
 ```
+# express引入
+```
+// 1.引入express
+const express = require('express');
+// 2.创建应用对象
+const app = express();
+// 3.创建路由规则
+// request 是对请求报文的封装
+// response是对相应报文的封装
+app.get('/',(request,response)=>{
+    // 设置相应
+    response.send('hello express');
 
+});
+// 4.监听端口启动服务
+app.listen(8000,()=>{
+    console.log('服务已经启动，8000端口监听中。。。。');
+})
+```
+# 在网页js中创建 XMLHttpRequest 对象，获取相应体
+```
+// 1.创建对象
+            const xhr = new XMLHttpRequest();
+            // 2.初始化，设置请求方法和url
+            xhr.open('GET', 'http://127.0.0.1:8000/server');
+
+            // 3.发送
+            xhr.send();
+            // 4.事件绑定，处理服务端返回的结果
+            // on when 当...的时候
+            // readystate 是xhr对象中的属性，表示状态 0 1 2 3 4
+            // change 改变
+            xhr.onreadystatechange = function () {
+
+                // 判断 (服务端返回了所有的结果)
+                if (xhr.readyState === 4) {
+                    // 判断相应状态码 200 404 403 401 500
+                    // 2xx 都为成功
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        // 处理结果 行 头  空行 体
+                        // 1.相应行
+                        console.log(xhr.status); //状态码
+                        console.log(xhr.statusText); //状态字符串
+                        console.log(xhr.getAllResponseHeaders()); //所有相应头
+                        console.log(xhr.response); //响应体
+
+                        // 设置result的文本
+                        result.innerHTML = xhr.response;
+
+                    } else {
+
+                    }
+                }
+            }
+```
+
+# Ajax GET设置请求参数
+
+直接在url后面加?a=100，这种参数，多个参数用&分割
+例如：http://127.0.0.1:8000/server?a=100%b=200
+
+# Ajax POST设置请求参数
+```
+ // 3.发送
+    xhr.send('a=100&b=200&c=300');
+    xhr.send('a:100&b:200&c:300');
+```
+引号内可以是任何可以解析的代码，但是在实际使用中，应该按照一定的格式来进行书写。(json格式)
+
+# 服务端相应JSON数据
