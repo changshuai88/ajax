@@ -14,7 +14,7 @@ app.get('/server',(request,response)=>{
     // 设置相应头 设置允许跨域
     response.setHeader('Access-Control-Allow-Origin','*');
     // 设置相应
-    response.send('hello AJAX');
+    response.send('hello AJAX-2');
 });
 
 app.post('/server',(request,response)=>{
@@ -45,6 +45,24 @@ app.all('/json-server',(request,response)=>{
     let str = JSON.stringify(data);
     // 设置相应 send 方法中只能接收字符串
     response.send(str);
+});
+
+//针对IE缓存
+app.get('/ie',(request,response)=>{
+    // 设置相应头 设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin','*');
+    // 设置相应
+    response.send('hello AJAX-3');
+});
+// 延时相应
+app.get('/time',(request,response)=>{
+    // 设置相应头 设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin','*');
+    // 设置延时
+    setTimeout(()=>{
+    // 设置相应
+    response.send('延时响应');
+    },3000)
 });
 // 4.监听端口启动服务
 app.listen(8000,()=>{

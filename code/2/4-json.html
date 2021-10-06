@@ -36,12 +36,12 @@
                     if (xhr.status >= 200 && xhr.status < 300) {
                         // console.log(xhr.response);
                         // result.innerHTML = xhr.response;
-                        // 手动数据转化
+                        // 1.手动数据转化
                         // let data = JSON.parse(xhr.response);
                         // console.log(data);
                         // result.innerHTML = data.name;
 
-                        // 自动转换 需要在 设置xhr.responseType = 'json';
+                        // 2.自动转换 需要在 设置xhr.responseType = 'json';
                         console.log(xhr.response);
                         result.innerHTML = xhr.response.name;
 
