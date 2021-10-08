@@ -41,6 +41,8 @@
             $.ajax({
                 //url
                 url: 'http://127.0.0.1:8000/jquery-server',
+                // 测试超时和出错
+                // url: 'http://127.0.0.1:8000/time',
                 //参数
                 data: {
                     a: 100,
@@ -48,10 +50,24 @@
                 },
                 //请求类型
                 type: 'GET',
+                //响应体结果
+                dataType: 'json',
                 //成功的回调
                 success: function (data) {
                     console.log(data);
+                },
+                // 超时时间
+                timeout: 2000,
+                // 失败的回调
+                error: function () {
+                    console.log('出错了！');
+                },
+                // 头信息
+                headers: {
+                    c: 300,
+                    d: 400
                 }
+
             })
         })
     </script>

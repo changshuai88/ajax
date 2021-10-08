@@ -68,6 +68,17 @@ app.get('/time',(request,response)=>{
 app.all('/jquery-server',(request,response)=>{
     // 设置相应头 设置允许跨域
     response.setHeader('Access-Control-Allow-Origin','*');
+    response.setHeader('Access-Control-Allow-Headers','*');
+    // response.send('hello jQuery Ajax');
+    let data={name:'cjs'};
+    response.send(JSON.stringify(data));
+  
+});
+//axios服务
+app.all('/axios-server',(request,response)=>{
+    // 设置相应头 设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin','*');
+    response.setHeader('Access-Control-Allow-Headers','*');
     // response.send('hello jQuery Ajax');
     let data={name:'cjs'};
     response.send(JSON.stringify(data));

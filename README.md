@@ -164,7 +164,8 @@ xhr.open('GET', 'http://127.0.0.1:8000/ie?t=' + Date.now());
 
 # jquery 中的Ajax。
 
-语法：$.get('url',{对象},function回调(响应体){},'json'(表示响应体是一个json格式数据,这里注意是字符串json))
+1.get 和post 方法
+语法：$.get(或者post)('url',{对象},function回调(响应体){},'json'(表示响应体是一个json格式数据,这里注意是字符串json))
 ```
  $('button').eq(0).click(function () {
             $.get('http://127.0.0.1:8000/jquery-server', {
@@ -175,3 +176,65 @@ xhr.open('GET', 'http://127.0.0.1:8000/ie?t=' + Date.now());
             })
         })
 ```
+2.ajax方法
+语法：$.ajax({对象})，例子如下
+```
+  $.ajax({
+            //url
+                url: 'http://127.0.0.1:8000/jquery-server',
+                // 测试超时和出错
+                // url: 'http://127.0.0.1:8000/time',
+                //参数
+                data: {
+                    a: 100,
+                    b: 200
+                },
+                //请求类型
+                type: 'GET',
+                //响应体结果
+                dataType: 'json',
+                //成功的回调
+                success: function (data) {
+                    console.log(data);
+                },
+                // 超时时间
+                timeout: 2000,
+                // 失败的回调
+                error: function () {
+                    console.log('出错了！');
+                },
+                // 头信息
+                headers: {
+                    c: 300,
+                    d: 400
+                }
+
+            })
+```
+其中ajax方法还有很多参数，以上为常用参数，其余参数可参考jquery网站。
+
+# axios vue和React推荐的Ajax工具包
+
+地址：https://github.com/axios/axios
+例子：
+ ``` 
+ // 配置baseURL
+        axios.defaults.baseURL = 'http://127.0.0.1:8000';
+
+        btns[0].onclick = function () {
+            //GET请求
+            axios.get('/axios-server', {
+                //url参数
+                params: {
+                    id: 100,
+                    vip: 7
+                },
+                // 请求头信息
+                headers: {
+                    name: 'cjs',
+                    age: 30
+                }
+            })
+        }
+```
+这只是一个初步了解，需要学习单独axios教程
