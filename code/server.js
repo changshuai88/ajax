@@ -65,10 +65,12 @@ app.get('/time',(request,response)=>{
     },3000)
 });
 //jquery服务
-app.get('/jquery-server',(request,response)=>{
+app.all('/jquery-server',(request,response)=>{
     // 设置相应头 设置允许跨域
     response.setHeader('Access-Control-Allow-Origin','*');
-    response.send('hello jQuery Ajax');
+    // response.send('hello jQuery Ajax');
+    let data={name:'cjs'};
+    response.send(JSON.stringify(data));
   
 });
 // 4.监听端口启动服务

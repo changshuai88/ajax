@@ -164,7 +164,7 @@ xhr.open('GET', 'http://127.0.0.1:8000/ie?t=' + Date.now());
 
 # jquery 中的Ajax。
 
-语法：$.get('url',{对象},function回调(响应体){})
+语法：$.get('url',{对象},function回调(响应体){},'json'(表示响应体是一个json格式数据,这里注意是字符串json))
 ```
  $('button').eq(0).click(function () {
             $.get('http://127.0.0.1:8000/jquery-server', {
