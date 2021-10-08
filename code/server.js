@@ -64,6 +64,13 @@ app.get('/time',(request,response)=>{
     response.send('延时响应');
     },3000)
 });
+//jquery服务
+app.get('/jquery-server',(request,response)=>{
+    // 设置相应头 设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin','*');
+    response.send('hello jQuery Ajax');
+  
+});
 // 4.监听端口启动服务
 app.listen(8000,()=>{
     console.log('服务已经启动,8000端口监听中....');

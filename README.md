@@ -160,3 +160,18 @@ xhr.open('GET', 'http://127.0.0.1:8000/ie?t=' + Date.now());
 
 `x.abort();`
 注意变量的作用域问题
+
+
+# jquery 中的Ajax。
+
+语法：$.get('url',{对象},function回调(响应体){})
+```
+ $('button').eq(0).click(function () {
+            $.get('http://127.0.0.1:8000/jquery-server', {
+                a: 100,
+                b: 200
+            }, function (data) {
+                console.log(data);
+            })
+        })
+```
