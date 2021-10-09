@@ -238,3 +238,68 @@ xhr.open('GET', 'http://127.0.0.1:8000/ie?t=' + Date.now());
         }
 ```
 这只是一个初步了解，需要学习单独axios教程
+
+axios通用方法例子：
+``` 
+btns[2].onclick = function () {
+            axios({
+                // url
+                url: '/axios-server',
+                //url参数
+                params: {
+                    vip: 10,
+                    level: 30
+                },
+                // 头信息
+                headers: {
+                    a: 100,
+                    b: 200
+                },
+                // 请求体参数
+                data: {
+                    username: 'admin',
+                    password: 'admin'
+                }
+
+            }).then(response => {
+                console.log(response);
+                // 相应状态码
+                console.log(response.status);
+                // 相应状态字符串
+                console.log(response.statusText);
+                // 响应头信息
+                console.log(response.headers);
+                // 响应体
+                console.log(response.data);
+            })
+        }
+```
+
+# fetch()函数发送Ajax
+语法：
+```
+ btn.onclick = function () {
+            fetch('http://127.0.0.1:8000/fetch-server', {
+                //  请求方法
+                method: 'POST',
+                // 请求头
+                headers: {
+                    name: 'cjs'
+                },
+                // 请求体
+                body: 'username=admin&password=admin'
+                //有then，说明是一个promise。
+            }).then(response => {
+                // return response.text();
+                return response.json();
+            }).then(response => {
+                console.log(response);
+            })
+        }
+```
+
+# 跨域
+## 同源策略
+同源：协议，域名，端口号，必须完全相同。
+违背同源策略就是跨域
+
