@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery-jsonp</title>
+    <style>
+        #result {
+            width: 300px;
+            height: 100px;
+            border: gold solid 1px;
+        }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1>
+        点击按钮发请求，请求结果在div中呈现
+    </h1>
+    <button>点击发送jsonp请求</button>
+
+    <div id="result">
+
+    </div>
+    <script>
+        $('button').eq(0).click(function () {
+            // 这里url后面加?callback=?为固定写法
+            $.getJSON('http://127.0.0.1:8000/jquery-jsonp-server?callback=?', function (data) {
+                // console.log(data);
+                // 这里获取到了data对象的值 就可以直接进行处理
+                $('#result').html(`
+                名称:${data.name},<br/>
+                住址:${data.city}                
+            `)
+            })
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsonp 案例</title>
+</head>
+
+<body>
+    用户名: <input type="text" id="username">
+    <p></p>
+    <script>
+        //获取input 元素
+        const input = document.querySelector('input');
+        const p = document.querySelector('p');
+        //在服务端设置了handle函数，那么，必须在这里声明handle函数
+        function handle(data) {
+            // 调用函数将input的边框设置颜色
+            input.style.border = 'solid 1px gold';
+            //设置p标签文本
+            p.innerHTML = data.msg;
+        }
+
+
+        //绑定事件
+        input.onblur = function () {
+            //获取用户的输入值
+            let username = this.value;
+            //向服务器发送请求，检测用户名是否存在
+            //1. 创建script标签
+            const script = document.createElement('script');
+            // 2.设置标签的src属性
+            script.src = 'http://127.0.0.1:8000/check-username';
+            // 3.将script标签插入文档中
+            document.body.appendChild(script);
+        }
+    </script>
+</body>
+
+</html>
