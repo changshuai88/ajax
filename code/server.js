@@ -139,6 +139,16 @@ app.all('/jquery-jsonp-server',(request,response)=>{
     response.end(`${cb}(${str})`);
 });
 
+//CORS 服务
+app.all('/cors-server',(request,response)=>{
+    // *为通配符，都有效
+    response.setHeader('Access-Control-Allow-Origin','*');
+    // 下面代码表示只有对应的网址有效
+    // response.setHeader('Access-Control-Allow-Origin','http://127.0.0.1:5000');
+
+    response.send('hello cors');
+})
+
 // 4.监听端口启动服务
 app.listen(8000,()=>{
     console.log('服务已经启动,8000端口监听中....');
